@@ -21,6 +21,7 @@ namespace SpheroCalculator
             double measure = data.UserMeasureData;
 
             double result;
+
             if (data.Calculation == TypeOfCalculation.Height && data.Surface == TypeOfSurface.Concave)
             {
                 result = Calculator.ConcaveHeight(measure, ring, ball);

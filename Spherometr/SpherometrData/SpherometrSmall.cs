@@ -13,8 +13,8 @@ namespace SpheroCalculator
 
         public SpherometrSmall(int ringNumber)
         {
-            ring = rings[ringNumber];
-            ball = balls[ringNumber];
+            ring = rings[ringNumber - 1];
+            ball = balls[ringNumber - 1];
         }
         public override double GetRingRadius()
         {

@@ -24,8 +24,6 @@ namespace SpheroCalculator
             double tmpDif = measure - ball;
             double rootExp = tmpDif * tmpDif - ring * ring;
             double result = tmpDif - Math.Sqrt(rootExp);
-            Console.WriteLine("===========" + Math.Sqrt(rootExp));
-            Console.WriteLine("----" + result);
             return Math.Round(result, 3);
         }
         public static double ConvexHeight(double measure, double ring, double ball)
