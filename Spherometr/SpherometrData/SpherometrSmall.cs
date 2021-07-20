@@ -2,7 +2,7 @@
 
 namespace SpheroCalculator
 {
-    class SpherometrSmall : Spherometr
+    public class SpherometrSmall : Spherometr
     {
         double[] rings = { 59.9797, 42.504, 29.964, 21.2656, 15.0073, 0, 7.477 };
 
