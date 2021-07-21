@@ -4,7 +4,7 @@ namespace SpheroCalculator
 {
     class Controller
     {
-
+        delegate double UniversalSpherometrCalculator(double measure, double ring, double ball);
         static void Main(string[] args)
         {
             UserInputData data = IOController.GetUserData();
@@ -20,30 +20,30 @@ namespace SpheroCalculator
             double ball = spherometr.GetBallRadius();
             double measure = data.UserMeasureData;
 
-            double result;
+            UniversalSpherometrCalculator calculator;
 
             if (data.Calculation == TypeOfCalculation.Height && data.Surface == TypeOfSurface.Concave)
             {
-                result = Calculator.ConcaveHeight(measure, ring, ball);
+                calculator = Calculator.ConcaveHeight;
             }
             else if (data.Calculation == TypeOfCalculation.Height && data.Surface == TypeOfSurface.Convex)
             {
-                result = Calculator.ConvexHeight(measure, ring, ball);
+                calculator = Calculator.ConvexHeight;
             }
             else if (data.Calculation == TypeOfCalculation.Radius && data.Surface == TypeOfSurface.Concave)
             {
-                result = Calculator.ConcaveRadius(measure, ring, ball);
+                calculator = Calculator.ConcaveRadius;
             }
             else if (data.Calculation == TypeOfCalculation.Radius && data.Surface == TypeOfSurface.Convex)
             {
-                result = Calculator.ConvexRadius(measure, ring, ball);
+                calculator = Calculator.ConvexRadius;
             }
             else
             {
                 throw new Exception("Нет таких параметров вычислений");
             }
 
-            IOController.PrintResult(result);
+            IOController.PrintResult(calculator(measure, ring, ball));
         }
     }
 }
