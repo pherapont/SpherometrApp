@@ -5,24 +5,54 @@ namespace SpheroCalculator
 {
     public class CommandLineInterface : ISpherometrUserInput
     {
-        public int GetSurfaceType()
+        UserInputData userParametrs = new UserInputData();
+        public UserInputData GetUserParametrs()
         {
-            return GetBinaryInput("поверхности", "Вогнутая", "Выпуклая");
+            GetSurfaceType();
+            GetCalculationType();
+            GetSpherometrType();
+            GetRingNumber();
+            GetUserMeasure();
+            return userParametrs;
         }
-        public int GetCalculationType()
+        public void CalculateAndPrint()
         {
-            return GetBinaryInput("вычисления", "Стрелка", "Радиус");
+            double result = Controller.GetAndCalculate(userParametrs);
+            PrintMessage(result.ToString());
         }
-        public int GetSpherometrType()
+        private void GetSurfaceType()
         {
-            return GetBinaryInput("сферометра", "Большой", "Малый"); ;
+            userParametrs.Surface = (TypeOfSurface)GetBinaryInput("поверхности", "Вогнутая", "Выпуклая");
         }
-        public int GetRingNumber(string rings)
+        private void GetCalculationType()
         {
+            userParametrs.Calculation = (TypeOfCalculation)GetBinaryInput("вычисления", "Стрелка", "Радиус");
+        }
+        private void GetSpherometrType()
+        {
+            userParametrs.Spherometr = (TypeOfSpherometr)GetBinaryInput("сферометра", "Большой", "Малый");
+        }
+        private void GetRingNumber()
+        {
+            string rings = "";
+            if (userParametrs.Spherometr == TypeOfSpherometr.Big)
+            {
+                foreach (RingsOfBigSpherometr ring in Enum.GetValues(typeof(RingsOfBigSpherometr)))
+                {
+                    rings += (int)ring + " ";
+                }
+            }
+            else
+            {
+                foreach (RingsOfSmallSpherometr ring in Enum.GetValues(typeof(RingsOfSmallSpherometr)))
+                {
+                    rings += (int)ring + " ";
+                }
+            }
             Console.ForegroundColor = ConsoleColor.Green;
 
             string line1 = "======================";
-            string line2 = "Определите номер кольца большого сферометра:";
+            string line2 = "Определите номер кольца сферометра:";
             PrintLines(line1, line2, rings);
 
             int ringNumber;
@@ -36,9 +66,9 @@ namespace SpheroCalculator
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.CursorLeft = 5;
             }
-            return ringNumber;
+            userParametrs.RingNumber = ringNumber;
         }
-        public double GetUserMeasure()
+        private void GetUserMeasure()
         {
             Console.ForegroundColor = ConsoleColor.Green;
 
@@ -58,9 +88,9 @@ namespace SpheroCalculator
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.CursorLeft = 5;
             }
-            return userData;
+            userParametrs.UserMeasureData = userData;
         }
-        public void PrintMessage(string mes)
+        private void PrintMessage(string mes)
         {
             Console.WriteLine();
             Console.CursorLeft = (Console.BufferWidth - mes.Length) / 2;

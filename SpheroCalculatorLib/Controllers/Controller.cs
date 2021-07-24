@@ -5,12 +5,8 @@ namespace SpheroCalculatorLib
     public class Controller
     {
         delegate double UniversalSpherometrCalculator(double measure, double ring, double ball);
-        public static void GetAndCalculate(ISpherometrUserInput userInput)
+        public static double GetAndCalculate(UserInputData data)
         {
-            InputController inputController = new InputController();
-
-            UserInputData data = inputController.GetUserData(userInput);
-
             Spherometr spherometr;
             if (data.Spherometr == TypeOfSpherometr.Big)
             {
@@ -46,8 +42,7 @@ namespace SpheroCalculatorLib
             {
                 throw new Exception("Нет таких параметров вычислений");
             }
-
-            inputController.PrintResult(userInput, calculator(measure, ring, ball));
+            return calculator(measure, ring, ball);
         }
     }
 }
