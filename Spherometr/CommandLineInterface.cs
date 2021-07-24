@@ -3,7 +3,7 @@ using SpheroCalculatorLib;
 
 namespace SpheroCalculator
 {
-    public class CLISpherometrUserInput : ISpherometrUserInput
+    public class CommandLineInterface : ISpherometrUserInput
     {
         public int GetSurfaceType()
         {

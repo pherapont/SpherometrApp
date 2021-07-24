@@ -1,5 +1,5 @@
 ﻿using NUnit.Framework;
-using SpheroCalculator;
+using SpheroCalculatorLib;
 
 namespace SpherometrTests
 {

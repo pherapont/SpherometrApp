@@ -1,14 +1,12 @@
 ﻿using System;
-using SpheroCalculatorLib;
 
-namespace SpheroCalculator
+namespace SpheroCalculatorLib
 {
     class InputController
     {
-        ISpherometrUserInput userInput = new CLISpherometrUserInput();
 
         UserInputData inputData = new UserInputData();
-        public UserInputData GetUserData()
+        public UserInputData GetUserData(ISpherometrUserInput userInput)
         {
             userInput.PrintMessage("Приложение для расчета параметров сферической поверхности");
 
@@ -41,7 +39,7 @@ namespace SpheroCalculator
             return inputData;
         }
 
-        public void PrintResult(double result)
+        public void PrintResult(ISpherometrUserInput userInput, double result)
         {
             userInput.PrintMessage($"Результат вычислений: {result:f3}мм.");
         }

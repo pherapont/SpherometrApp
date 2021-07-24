@@ -1,22 +1,23 @@
 ﻿using System;
-using SpheroCalculatorLib;
 
-namespace SpheroCalculator
+namespace SpheroCalculatorLib
 {
-    class Controller
+    public class Controller
     {
         delegate double UniversalSpherometrCalculator(double measure, double ring, double ball);
-        static void Main(string[] args)
+        public static void GetAndCalculate(ISpherometrUserInput userInput)
         {
             InputController inputController = new InputController();
 
-            UserInputData data = inputController.GetUserData();
+            UserInputData data = inputController.GetUserData(userInput);
 
             Spherometr spherometr;
             if (data.Spherometr == TypeOfSpherometr.Big)
             {
                 spherometr = new SpherometrBig(data.RingNumber);
-            } else {
+            }
+            else
+            {
                 spherometr = new SpherometrSmall(data.RingNumber);
             }
             double ring = spherometr.GetRingRadius();
@@ -46,7 +47,7 @@ namespace SpheroCalculator
                 throw new Exception("Нет таких параметров вычислений");
             }
 
-            inputController.PrintResult(calculator(measure, ring, ball));
+            inputController.PrintResult(userInput, calculator(measure, ring, ball));
         }
     }
 }
