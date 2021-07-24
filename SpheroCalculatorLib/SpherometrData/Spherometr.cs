@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SpheroCalculator
+﻿namespace SpheroCalculatorLib
 {
     public abstract class Spherometr
     {

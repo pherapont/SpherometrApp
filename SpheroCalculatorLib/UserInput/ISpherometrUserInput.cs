@@ -1,6 +1,6 @@
-﻿namespace SpheroCalculator
+﻿namespace SpheroCalculatorLib
 {
-    interface ISpherometrUserInput
+    public interface ISpherometrUserInput
     {
         int GetSurfaceType();
         int GetCalculationType();

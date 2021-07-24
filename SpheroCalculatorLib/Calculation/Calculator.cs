@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SpheroCalculator
+namespace SpheroCalculatorLib
 {
     public class Calculator
     {
