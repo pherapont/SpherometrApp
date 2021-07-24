@@ -7,7 +7,9 @@ namespace SpheroCalculator
         delegate double UniversalSpherometrCalculator(double measure, double ring, double ball);
         static void Main(string[] args)
         {
-            UserInputData data = IOController.GetUserData();
+            InputController inputController = new InputController();
+
+            UserInputData data = inputController.GetUserData();
 
             Spherometr spherometr;
             if (data.Spherometr == TypeOfSpherometr.Big)
@@ -43,7 +45,7 @@ namespace SpheroCalculator
                 throw new Exception("Нет таких параметров вычислений");
             }
 
-            IOController.PrintResult(calculator(measure, ring, ball));
+            inputController.PrintResult(calculator(measure, ring, ball));
         }
     }
 }

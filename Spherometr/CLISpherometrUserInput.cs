@@ -2,30 +2,21 @@
 
 namespace SpheroCalculator
 {
-    public class CLI
+    public class CLISpherometrUserInput : ISpherometrUserInput
     {
-        internal static void PrintMessage( string mes )
-        {
-            Console.WriteLine();
-            Console.CursorLeft = (Console.BufferWidth - mes.Length) / 2;
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine(mes.ToUpper());
-            Console.WriteLine();
-            Console.ResetColor();
-        }
-        internal static int GetSurfaceType()
+        public int GetSurfaceType()
         {
             return GetBinaryInput("поверхности", "Вогнутая", "Выпуклая");
         }
-        internal static int GetCalculationType()
+        public int GetCalculationType()
         {
             return GetBinaryInput("вычисления", "Стрелка", "Радиус");
         }
-        internal static int GetSpherometrType()
+        public int GetSpherometrType()
         {
             return GetBinaryInput("сферометра", "Большой", "Малый"); ;
         }
-        internal static int GetRingNumber(string rings)
+        public int GetRingNumber(string rings)
         {
             Console.ForegroundColor = ConsoleColor.Green;
 
@@ -46,7 +37,7 @@ namespace SpheroCalculator
             }
             return ringNumber;
         }
-        internal static double GetUserMeasure()
+        public double GetUserMeasure()
         {
             Console.ForegroundColor = ConsoleColor.Green;
 
@@ -67,6 +58,15 @@ namespace SpheroCalculator
                 Console.CursorLeft = 5;
             }
             return userData;
+        }
+        public void PrintMessage(string mes)
+        {
+            Console.WriteLine();
+            Console.CursorLeft = (Console.BufferWidth - mes.Length) / 2;
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine(mes.ToUpper());
+            Console.WriteLine();
+            Console.ResetColor();
         }
         private static int GetBinaryInput(string inputType, string type1, string type2)
         {
