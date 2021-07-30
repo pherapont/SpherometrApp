@@ -6,14 +6,14 @@ namespace SpheroCalculatorLib
     {
         public static double ConcaveRadius(double measure, double ring, double ball)
         {
-            double term_1 = ring * ring / measure;
+            double term_1 = ring * ring / (2 * measure);
             double term_2 = measure / 2;
             double result = term_1 + term_2 + ball;
             return Math.Round(result, 1);
         }
         public static double ConvexRadius(double measure, double ring, double ball)
         {
-            double term_1 = ring * ring / measure;
+            double term_1 = ring * ring / (2 * measure);
             double term_2 = measure / 2;
             double result = term_1 + term_2 - ball;
             return Math.Round(result, 1);
