@@ -15,9 +15,8 @@ namespace SpheroCalculator
             GetUserMeasure();
             return userParametrs;
         }
-        public void CalculateAndPrint()
+        public void PrintResult(double result)
         {
-            double result = Controller.GetAndCalculate(userParametrs);
             PrintMessage(result.ToString());
         }
         private void GetSurfaceType()

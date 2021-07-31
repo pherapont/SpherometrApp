@@ -3,6 +3,6 @@
     public interface ISpherometrUserInput
     {
         UserInputData GetUserParametrs();
-        void CalculateAndPrint();
+        void PrintResult(double result);
     }
 }
