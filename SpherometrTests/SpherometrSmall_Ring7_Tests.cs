@@ -28,6 +28,7 @@ namespace SpherometrTests
 
         [TestCase(71, 0.388)]
         [TestCase(31.62, 0.864)]
+        [TestCase(154.9, 0.179)]
         public void TestConvexHeight(double radius, double height)
         {
             double calcHeight = Calculator.ConvexHeight(radius, ring, ball);
@@ -43,6 +44,7 @@ namespace SpherometrTests
 
         [TestCase(0.388, 71.1)]
         [TestCase(0.864, 31.6)]
+        [TestCase(0.179, 155.1)]
         public void TestConvexRadius(double height, double radius)
         {
             double calcRadius = Calculator.ConvexRadius (height, ring, ball);
