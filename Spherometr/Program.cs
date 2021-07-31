@@ -7,8 +7,9 @@ namespace SpheroCalculator
         static void Main(string[] args)
         {
             ISpherometrUserInput CLI = new CommandLineInterface();
-            CLI.GetUserParametrs();
-            CLI.CalculateAndPrint();
+            UserInputData inputData = CLI.GetUserParametrs();
+            double result = Controller.GetAndCalculate(inputData);
+            CLI.PrintResult(result);
         }
     }
 }
